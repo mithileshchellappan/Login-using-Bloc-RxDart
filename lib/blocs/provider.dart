@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+import 'bloc.dart';
+
+class Provider extends InheritedWidget {
+  final bloc = Bloc();
+
+  Provider({Key key, Widget child}) : super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(_) => true;
+
+  static Bloc of(BuildContext context) {
+    // ignore: deprecated_member_use
+    return (context.inheritFromWidgetOfExactType(Provider) as Provider).bloc;
+  }
+}
